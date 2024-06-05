@@ -22,7 +22,7 @@ model Patient {
   id Int @id @default(autoincrement())
   userId Int @unique
   name String
-  phone String
+  phone String @unique
   user User @relation(fields: [userId], references: [id])
   appointment Appointment[]
   createdAt DateTime @default(now())
