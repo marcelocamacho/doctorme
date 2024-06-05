@@ -24,6 +24,12 @@ export default class DatabaseService{
         })
     }
 
+    getUserByPhone(phone: string){
+        return this.connection.user.findUnique({
+            where: {phone}
+        });
+    }
+
     createUser(phone: string, password: string){
         return this.connection.user.create({
             data: {
