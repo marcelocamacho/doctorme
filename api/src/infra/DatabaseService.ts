@@ -17,10 +17,14 @@ export default class DatabaseService{
         });
     }
 
-    getPatientByPhone(phone: string, includeAppointment: boolean = false){
+    getPatientByPhone(phone: string, includeAppointment: boolean = false, includeDoctor:boolean = false){
         return this.connection.patient.findUnique({
             where: {phone},
-            include: {appointment:includeAppointment}
+            include: { 
+                appointment: !includeAppointment ? false : {
+                    include: {doctor: includeDoctor}
+                }
+            }
         })
     }
 
@@ -70,6 +74,8 @@ export default class DatabaseService{
             }
         })
     }
+
+    
 }
 
 export const database = new DatabaseService(new PrismaClient())

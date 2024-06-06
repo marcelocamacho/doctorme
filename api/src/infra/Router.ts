@@ -6,7 +6,7 @@ import helmet from 'helmet';
 import DoctorController from '@/application/controller/DoctorController';
 import PatientController from '@/application/controller/PatientController';
 import { validateBody,validateParams } from '@/infra/ValidationMiddleware';
-import {authenticationSchema,createPatientPatientIdSchema,createAppointmentAgendaIdSchema} from '@/infra/ValidationSchema';
+import {authenticationSchema,createPatientPatientIdSchema,createAppointmentAgendaIdSchema,getDoctorByIdSchema, getPatientPhoneSchema} from '@/infra/ValidationSchema';
 
 export default class Router {
     app: express.Express;
@@ -27,6 +27,7 @@ export default class Router {
             res.send('Hello World');
         });
         this.app.get('/doctors',this.doctorController.listDoctor);
+        this.app.get('/doctor/:id',validateParams(getDoctorByIdSchema),this.doctorController.getDoctorById);
         this.app.post('/patient', this.patientController.createPatient);
         this.app.post('/patient/:patientId/appointment', 
             validateParams(createPatientPatientIdSchema),
@@ -35,6 +36,7 @@ export default class Router {
         this.app.post('/authenticate', 
             validateBody(authenticationSchema),
             this.patientController.authenticate);
+        this.app.get('/patient/',validateBody(getPatientPhoneSchema),this.patientController.getPatientByPhone);
     }
 
     public start(port: number){

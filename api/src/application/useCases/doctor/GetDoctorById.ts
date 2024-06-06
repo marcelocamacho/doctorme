@@ -1,10 +1,11 @@
 import DatabaseService from "@/infra/DatabaseService"
 
-export default class GetPatientByIdUseCase {
+export default class GetDoctorByIdUseCase {
     constructor (readonly database: DatabaseService){}
 
     async execute(id:number){
         const INCLUDE_AGENDA = true;
+        const INCLUDE_DOCTOR = true;
         const doctor = await this.database.getDoctorById(id,INCLUDE_AGENDA)
 
         if(!doctor){

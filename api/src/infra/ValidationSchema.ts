@@ -12,3 +12,11 @@ export const createAppointmentAgendaIdSchema = joi.object({
 export const createPatientPatientIdSchema = joi.object({
     patientId: joi.number().required(),
 });
+
+export const getDoctorByIdSchema = joi.object({
+    doctorId: joi.number().required(),
+});
+
+export const getPatientPhoneSchema = joi.object({
+    phone: joi.string().required(),
+})
