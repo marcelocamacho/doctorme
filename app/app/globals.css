@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-white text-[#272727];
+  @apply font-sans bg-white text-[#272727];
 }
 
 @layer utilities {
