@@ -30,9 +30,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <PreloadResource/>
-      <body className={`${roboto.variable} ${sourceSans3.variable}`}>
-        <div className="bg-white text-red-500">header</div>
-        {children}
+      <body className={`${roboto.variable} ${sourceSans3.variable} bg-slate-200`}>
+        <div className="w-full max-w-[382px] m-auto mt-10 bg-white py-10 px-7 rounded-3xl shadow-md">
+          {children}
+        </div>
       </body>
     </html>
   );

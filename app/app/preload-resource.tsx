@@ -2,7 +2,7 @@
 import ReactDOM from "react-dom";
 
 export function PreloadResource(){
-    ReactDOM.preload('./sprinte.svg',{
+    ReactDOM.preload('./sprite.svg',{
         as: 'image',
     });
     return null;
